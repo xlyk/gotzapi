@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  gotzapi:
+    image: docker.pkg.github.com/xlyk/gotzapi/gotzapi:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "31415:31415"
