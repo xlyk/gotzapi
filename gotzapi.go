@@ -14,6 +14,7 @@ type location struct {
 
 func main() {
 	e := echo.New()
+	e.HideBanner = true
 	e.GET("/", index)
 	e.POST("/tz/", getTz)
 	e.Logger.Fatal(e.Start(":31415"))
