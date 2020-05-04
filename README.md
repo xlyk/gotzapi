@@ -4,7 +4,9 @@ Echo server listens at :31415
 
 # Usage
 
-    $ ./gotzapi
+    $ docker pull docker.pkg.github.com/xlyk/gotzapi/gotzapi:latest
+    
+    $ docker run -p 31415:31415 --restart unless-stopped -d docker.pkg.github.com/xlyk/gotzapi/gotzapi:latest
 
 # Examples
     

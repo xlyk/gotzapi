@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"gopkg.in/ugjka/go-tz.v2/tz"
 	"net/http"
 )
@@ -15,6 +16,11 @@ type location struct {
 func main() {
 	e := echo.New()
 	e.HideBanner = true
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		Skipper:      middleware.DefaultSkipper,
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{http.MethodGet, http.MethodHead, http.MethodPost},
+	}))
 	e.GET("/", index)
 	e.POST("/tz/", getTz)
 	e.Logger.Fatal(e.Start(":31415"))
